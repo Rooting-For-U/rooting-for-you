@@ -27,7 +27,8 @@
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.7",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "sequelize": "^6.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
