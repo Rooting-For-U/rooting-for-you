@@ -1,2 +1,4 @@
-plant = require('./plants.js');
+const plants = require('./plants.js');
+const userInfo = require('./userInfo.js');
 
+module.exports = { plants, userInfo };
