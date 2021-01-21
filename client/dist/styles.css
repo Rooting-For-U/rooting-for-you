@@ -1,0 +1,130 @@
+/* Login Page */
+
+html {
+  background: url("loginBkgd.svg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* main container */
+.center {
+  position: absolute;
+  top: 28%;
+  left: 33%;
+}
+
+/* sub container 1 */
+.title {
+  position: relative;
+  width: 480px;
+  height: 106px;
+  top: 0px;
+}
+
+.logo {
+  position: relative;
+  top: 0px;
+  font-family: Pacifico;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 84px;
+  text-align: center;
+}
+
+.description {
+  position: relative;
+  bottom: 0px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 33px;
+  text-align: center;
+}
+
+/* subcontainer 2 */
+.form {
+  position: relative;
+  width: 444px;
+  height: 182px;
+  top: 15px;
+  left: 16px;
+  background: #FDFDFD;
+  border-radius: 30px;
+}
+
+.signInTitle {
+  position: relative;
+  top: 7px;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.username {
+  position: relative;
+  width: 364px;
+  height: 30px;
+  top: 10px;
+  left: 40px;
+  background: rgba(26, 54, 91, 0.32);
+  border-radius: 30px;
+}
+
+.password {
+  position: relative;
+  width: 364px;
+  height: 30px;
+  left: 40px;
+  top: 20px;
+  background: rgba(26, 54, 91, 0.32);
+  border-radius: 30px;
+}
+
+.formTxt {
+  position: relative;
+  left: 10px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 30px;
+
+  color: rgba(0, 0, 0, 0.5);
+
+  color: #000000;
+  text-decoration: none;
+  outline: none;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.submitBtn {
+  position: relative;
+  width: 364px;
+  height: 30px;
+  top: 30px;
+  left: 40px;
+  background: #1A365B;
+  border-radius: 30px;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 30px;
+  text-align: center;
+
+  color: #FFFFFF;
+  text-decoration: none;
+  outline: none;
+  border-color: transparent;
+}
+

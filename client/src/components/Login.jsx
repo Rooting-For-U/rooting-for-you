@@ -2,8 +2,32 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Login = () => {
-  console.log('Login is called');
-  return (<div>Please login</div>);
+  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Submitting ${username} ${password}`)
+  }
+
+  return (
+    <div className = 'center'>
+      <div className ='title'>
+        <div className = 'logo'>Rooting For You</div>
+        <div className = 'description'>a water tracking app for your plant friends</div>
+      </div>
+      <form className = 'form' onSubmit={handleSubmit}>
+      <div className = 'signInTitle'>Sign In</div>
+      <div className = 'username'>
+        <input className = 'formTxt' value={username} onChange={(e) => setUsername(e.target.value)} placeholder= 'username' />
+      </div>
+      <div className = 'password'>
+      <input className = 'formTxt' value={password} type = 'password' onChange={(e) => setPassword(e.target.value)} placeholder= 'password' />
+      </div>
+      <input className = 'submitBtn' type="submit" value="submit" />
+      </form>
+    </div>
+  );
 };
 
 export default Login;
