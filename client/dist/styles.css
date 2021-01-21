@@ -133,25 +133,10 @@ html {
 /* HomePage */
 
 
-.navigation{
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width:100%;
-
-  font-family: Nunito;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #000000;
-}
 
 .navLogo {
-  position: relative;
-  left: 0%;
-  top: 0%;
+  position: absolute;
+  left: 20px;
   font-family: Pacifico;
   font-style: normal;
   font-weight: normal;
@@ -161,9 +146,9 @@ html {
 }
 
 .addPlant {
-  position: relative;
-  left: 10%;
-  top: 5%;
+  position: absolute;
+  left: 280px;
+  top: 27px;
   font-family: Nunito;
   font-style: normal;
   font-weight: normal;
@@ -178,9 +163,9 @@ html {
 }
 
 .findPlant {
-  position: relative;
-  left: 15%;
-  top: 5%;
+  position: absolute;
+  left: 380px;
+  top: 27px;
   font-family: Nunito;
   font-style: normal;
   font-weight: normal;
@@ -196,9 +181,9 @@ html {
 }
 
 .logout {
-  position: relative;
-  right: 3%;
-  top: 5%;
+  position: absolute;
+  right: 25px;
+  top: 27px;
   width: 84px;
   height: 23px;
   background: #1A365B;
