@@ -4,30 +4,51 @@ import Plant from './Plant.jsx';
 
 const Homepage = (userId) => {
   console.log('Homepage is called');
-  const [plants, setPlants] = useState([]);
+  const waterDate = Date();
+  const sampleData = [
+    {
+      plantName: 'A flower',
+      waterDateTime: waterDate,
+      location: 'kitchen',
+      imgURL: 'sampleWhiteFlower.jpg',
+    },
+    {
+      plantName: 'A grass',
+      waterDateTime: waterDate,
+      location: 'bedroom',
+      imgURL: 'sampleWhiteFlower.jpg',
+    },
+    {
+      plantName: 'A tree',
+      waterDateTime: waterDate,
+      location: 'yard I guess',
+      imgURL: 'sampleWhiteFlower.jpg',
+    },
+  ];
+  const [plants, setPlants] = useState(sampleData);
   // const[userId, setUserId] = useState(null); // this go to App
 
-  useEffect(() => {
-    axios.get('/plants', {
-      params: {
-        id: userId,
-      },
-    })
-      .then((allplants) => {
-        setPlants(allplants);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   axios.get('/plants', {
+  //     params: {
+  //       id: userId,
+  //     },
+  //   })
+  //     .then((allplants) => {
+  //       setPlants(allplants);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   return (
-    <div>
-      <div id="top-banner">
-        <span id="name-rooting-for-you">Rooting For You</span>
-        <button type="button">Add Plant</button>
-        <button type="button">Find Plant</button>
-        <button type="button">Logout</button>
+    <div className="homepage">
+      <div className="navigation">
+        <span className="navLogo">Rooting For You</span>
+        <button className="addPlant" type="button">add plant</button>
+        <button className="findPlant " type="button">find plant</button>
+        <button className="logout" type="button">log out</button>
       </div>
-      <span>
+      <span className="welcomeMsg">
         Welcome back
         {}
         , here's your plant status...

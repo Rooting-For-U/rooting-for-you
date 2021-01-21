@@ -10,6 +10,7 @@ const App = () => {
   return (
     <div>
       <Link to='/Login'>Go to Login Page</Link>
+      <Link to="/homepage">Go to homepage</Link>
     </div>
   );
 };
