@@ -21,6 +21,7 @@ const Homepage = (userId) => {
 
   return (
     <div className="homepage">
+      <img className="homepageImg" src='/homeBkgd.svg'></img>
       <div className="navigation">
         <span className="navLogo">Rooting For You</span>
         <button className="addPlant" type="button">add plant</button>
@@ -39,7 +40,6 @@ const Homepage = (userId) => {
           )))}
         </div>
       </div>
-      <img className="homepageImg" src='/homeBkgd.svg'></img>
     </div>
   );
 };
