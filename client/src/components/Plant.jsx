@@ -23,7 +23,7 @@ const Plant = (plant) => {
       <img className="waterDrop" src='./drop.svg' value={plant.plant.id} onClick={handleClick} alt="rain-drop" />
       <span className="plantName">{plant.plant.plant_name}</span>
       <div className="plantTxt">
-        <span> last watered: {plant.plant.lastWatered.slice(0, 10)} </span>
+        <span> last watered: {daysNoWater} ago</span>
         <br />
         <span>{plant.plant.location}</span>
       </div>

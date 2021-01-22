@@ -24,6 +24,7 @@ const Login = () => {
 
   return (
     <div>
+      <img className="loginBkgd" src="./loginBkgd.svg" />
       <div className="center">
         <div className="title">
           <div className="logo">Rooting For You</div>
@@ -59,7 +60,7 @@ const Login = () => {
           </Link>
         </form>
       </div>
-      <img className="loginBkgd" src="./loginBkgd.svg" />
+      
     </div>
   );
 };
