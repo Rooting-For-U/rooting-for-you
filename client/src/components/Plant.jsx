@@ -19,16 +19,16 @@ const Plant = (plant) => {
   };
 
   return (
-    <div className="single-plant-box" key={plant.plant.plantName}>
-      <img src={plant.plant.imgURL} alt="plant" width="100" height="120" />
-      <span>{plant.plant.plantName}</span>
+    <div className="plant" key={plant.plant.plantName}>
+      <img className="plantImg" src={plant.plant.imgURL} alt="plant" />
+      <img className="waterDrop" src='./drop.svg' onClick={handleClick}/>
+      <span className="plantName" >{plant.plant.plantName}</span>
+      <div className="plantTxt" >
+        <span> last watered: {plant.plant.waterDateTime.slice(0, 16)} </span>
+        <br />
+        <span>{plant.plant.location}</span>
+      </div>
       <br />
-      <span>Last time watered: </span>
-      <span>{plant.plant.waterDateTime.slice(0, 16)}</span>
-      <br />
-      <span>{plant.plant.location}</span>
-      <br />
-      <button type="button" onClick={handleClick}>Water</button>
     </div>
   );
 };

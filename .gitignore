@@ -3,3 +3,5 @@ node_modules
 database/login.js
 
 server/config/token.js
+
+client/dist/bundle.js

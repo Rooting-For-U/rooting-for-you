@@ -21,11 +21,12 @@ const Login = () => {
   };
 
   return (
-    <div className="center">
-      <div className="title">
-        <div className="logo">Rooting For You</div>
-        <div className="description">a water tracking app for your plant friends</div>
-      </div>
+    <div>
+      <div className="center">
+        <div className="title">
+          <div className="logo">Rooting For You</div>
+          <div className="description">a water tracking app for your plant friends</div>
+        </div>
       <form className="form" onSubmit={handleSubmit}>
         <div className="signInTitle">Sign In</div>
         <div className="username">
@@ -36,6 +37,8 @@ const Login = () => {
         </div>
         <input className="submitBtn" type="submit" value="submit" />
       </form>
+    </div>
+    <img className='loginBkgd' src='./loginBkgd.svg'></img>
     </div>
   );
 };

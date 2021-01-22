@@ -1,16 +1,21 @@
-/* Login Page */
-
-/* background: url("loginBkgd.svg") no-repeat center center fixed;
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover; */
-
 html {
   background: rgba(132, 213, 197, 0.15);
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
 }
 
+/* Login Page */
+
 /* main container */
+.loginBkgd {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0px;
+  left: 0px;
+  object-fit: cover;
+}
 .center {
   position: absolute;
   top: 28%;
@@ -132,8 +137,6 @@ html {
 
 /* HomePage */
 
-
-
 .navLogo {
   position: absolute;
   left: 20px;
@@ -199,9 +202,9 @@ html {
 
 .welcomeMsg {
   position: absolute;
-  left: 28px;
+  left: 27px;
   top: 74px;
-  
+
   font-family: Nunito;
   font-style: normal;
   font-weight: normal;
@@ -209,4 +212,76 @@ html {
   line-height: 33px;
 
   color: #000000;
+}
+
+.homepageImg {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+}
+
+/* plants */
+
+.plantContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  width: 80%;
+  height: 65%;
+  top: 15%;
+  left: 10%;
+  flex: 1;
+	overflow: auto;
+
+}
+
+.plant {
+  width: 220px;
+  height: 300px;
+  margin: 0px 44px 10px 44px;
+}
+
+.plantImg {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 15px;
+  top: 0px;
+}
+
+.plantName {
+  position: relative;
+  top: -10px;
+  left: -32px;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+.waterDrop {
+  position: relative;
+  top: -37px;
+  right: -190px;
+}
+
+.plantTxt {
+  position: relative;
+  top: -10px;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+
+.content {
+  display: flex;
+	height: 100%;
 }

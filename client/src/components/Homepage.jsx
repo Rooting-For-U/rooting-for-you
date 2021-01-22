@@ -7,23 +7,53 @@ const Homepage = (userId) => {
   const waterDate = Date();
   const sampleData = [
     {
-      plantName: 'A flower',
+      plantName: 'Orchid',
       waterDateTime: waterDate,
       location: 'kitchen',
       imgURL: 'sampleWhiteFlower.jpg',
     },
     {
-      plantName: 'A grass',
+      plantName: 'Succulent',
       waterDateTime: waterDate,
       location: 'bedroom',
       imgURL: 'sampleWhiteFlower.jpg',
     },
     {
-      plantName: 'A tree',
+      plantName: 'Herb',
       waterDateTime: waterDate,
       location: 'yard I guess',
       imgURL: 'sampleWhiteFlower.jpg',
     },
+    {
+      plantName: 'Herb',
+      waterDateTime: waterDate,
+      location: 'yard I guess',
+      imgURL: 'sampleWhiteFlower.jpg',
+    },
+    {
+      plantName: 'Herb',
+      waterDateTime: waterDate,
+      location: 'yard I guess',
+      imgURL: 'sampleWhiteFlower.jpg',
+    },
+    {
+      plantName: 'Herb',
+      waterDateTime: waterDate,
+      location: 'yard I guess',
+      imgURL: 'sampleWhiteFlower.jpg',
+    },
+    {
+      plantName: 'Herb',
+      waterDateTime: waterDate,
+      location: 'yard I guess',
+      imgURL: 'sampleWhiteFlower.jpg',
+    },
+    {
+      plantName: 'Herb',
+      waterDateTime: waterDate,
+      location: 'yard I guess',
+      imgURL: 'sampleWhiteFlower.jpg',
+    }
   ];
   const [plants, setPlants] = useState(sampleData);
   // const[userId, setUserId] = useState(null); // this go to App
@@ -53,12 +83,14 @@ const Homepage = (userId) => {
         {}
         , here's your plant status...
       </span>
-      <div>
-        {plants.map(((plant) => (
-          <Plant plant={plant} userId={userId} />
-        )))}
+      <div className ="content">
+        <div className="plantContainer">
+          {plants.map(((plant) => (
+            <Plant plant={plant} userId={userId} />
+          )))}
+        </div>
       </div>
-
+      <img className="homepageImg" src='/homeBkgd.svg'></img>
     </div>
   );
 };
