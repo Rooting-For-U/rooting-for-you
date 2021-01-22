@@ -44,6 +44,4 @@ LOAD DATA LOCAL INFILE '/Users/annie/Desktop/hackreactor/rooting-for-you/databas
 
 --modify path above according to where it is in your file
   -- log into mysql type in this -> source <path of this schema>
-  --if data doesn't save because of loading local data is distabled do the below steps:
-  --in mysql type this: SET GLOBAL local_infile=1;
-  --quit and restart and try downloading schema again
+--follow direction to csvtolocalDB to add csv
