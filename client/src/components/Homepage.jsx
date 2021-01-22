@@ -3,72 +3,21 @@ import axios from 'axios';
 import Plant from './Plant.jsx';
 
 const Homepage = (userId) => {
-  console.log('Homepage is called');
-  const waterDate = Date();
-  const sampleData = [
-    {
-      plantName: 'Orchid',
-      waterDateTime: waterDate,
-      location: 'kitchen',
-      imgURL: 'sampleWhiteFlower.jpg',
-    },
-    {
-      plantName: 'Succulent',
-      waterDateTime: waterDate,
-      location: 'bedroom',
-      imgURL: 'sampleWhiteFlower.jpg',
-    },
-    {
-      plantName: 'Herb',
-      waterDateTime: waterDate,
-      location: 'yard I guess',
-      imgURL: 'sampleWhiteFlower.jpg',
-    },
-    {
-      plantName: 'Herb',
-      waterDateTime: waterDate,
-      location: 'yard I guess',
-      imgURL: 'sampleWhiteFlower.jpg',
-    },
-    {
-      plantName: 'Herb',
-      waterDateTime: waterDate,
-      location: 'yard I guess',
-      imgURL: 'sampleWhiteFlower.jpg',
-    },
-    {
-      plantName: 'Herb',
-      waterDateTime: waterDate,
-      location: 'yard I guess',
-      imgURL: 'sampleWhiteFlower.jpg',
-    },
-    {
-      plantName: 'Herb',
-      waterDateTime: waterDate,
-      location: 'yard I guess',
-      imgURL: 'sampleWhiteFlower.jpg',
-    },
-    {
-      plantName: 'Herb',
-      waterDateTime: waterDate,
-      location: 'yard I guess',
-      imgURL: 'sampleWhiteFlower.jpg',
-    }
-  ];
-  const [plants, setPlants] = useState(sampleData);
+  const [plants, setPlants] = useState([]);
   // const[userId, setUserId] = useState(null); // this go to App
 
-  // useEffect(() => {
-  //   axios.get('/plants', {
-  //     params: {
-  //       id: userId,
-  //     },
-  //   })
-  //     .then((allplants) => {
-  //       setPlants(allplants);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
+  useEffect((userId) => {
+    axios.get('/u/plants', {
+      params: {
+        id: 2,
+      },
+    })
+      .then(({ data }) => {
+        console.log('allplatns: ', data);
+        setPlants(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="homepage">
@@ -96,3 +45,57 @@ const Homepage = (userId) => {
 };
 
 export default Homepage;
+
+
+// const waterDate = Date();
+// const sampleData = [
+//   {
+//     plantName: 'Orchid',
+//     waterDateTime: waterDate,
+//     location: 'kitchen',
+//     imgURL: 'sampleWhiteFlower.jpg',
+//   },
+//   {
+//     plantName: 'Succulent',
+//     waterDateTime: waterDate,
+//     location: 'bedroom',
+//     imgURL: 'sampleWhiteFlower.jpg',
+//   },
+//   {
+//     plantName: 'Herb',
+//     waterDateTime: waterDate,
+//     location: 'yard I guess',
+//     imgURL: 'sampleWhiteFlower.jpg',
+//   },
+//   {
+//     plantName: 'Herb',
+//     waterDateTime: waterDate,
+//     location: 'yard I guess',
+//     imgURL: 'sampleWhiteFlower.jpg',
+//   },
+//   {
+//     plantName: 'Herb',
+//     waterDateTime: waterDate,
+//     location: 'yard I guess',
+//     imgURL: 'sampleWhiteFlower.jpg',
+//   },
+//   {
+//     plantName: 'Herb',
+//     waterDateTime: waterDate,
+//     location: 'yard I guess',
+//     imgURL: 'sampleWhiteFlower.jpg',
+//   },
+//   {
+//     plantName: 'Herb',
+//     waterDateTime: waterDate,
+//     location: 'yard I guess',
+//     imgURL: 'sampleWhiteFlower.jpg',
+//   },
+//   {
+//     plantName: 'Herb',
+//     waterDateTime: waterDate,
+//     location: 'yard I guess',
+//     imgURL: 'sampleWhiteFlower.jpg',
+//   },
+// ];
+
