@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [password, setPassword] = useState('');
@@ -53,7 +54,9 @@ const Login = () => {
               placeholder="password"
             />
           </div>
-          <input className="submitBtn" type="submit" value="submit" />
+          <Link to={{ pathname: '/homepage', query: userId }}>
+            <input className="submitBtn" type="submit" value="submit" />
+          </Link>
         </form>
       </div>
       <img className="loginBkgd" src="./loginBkgd.svg" />
