@@ -4,10 +4,14 @@ const { argv } = require('yargs');
 const faker = require('faker');
 const { image } = require('faker');
 
-let lines = 10;
+//ids numbers
+let num = 0;
+//userRef id
+let lines = 0;
 const filename = argv.output || 'plantInfo.csv';
 const writeStream = fs.createWriteStream(filename);
-let userPlants;
+//assign random number of plants user has
+let userPlants = 0;
 
 const generateRandomBoolean = () => {
   const result = Math.floor(Math.random() * Math.floor(3));
@@ -35,7 +39,7 @@ const plantName = () => {
   return names[randomNum];
 }
 
-const plantImg = () => {
+const plantImage = () => {
   const plantUrl = [
     'https://images.unsplash.com/photo-1590951013162-549fe02568fd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cGxhbnR8ZW58MHwyfDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
     'https://images.unsplash.com/photo-1591958911259-bee2173bdccc?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8aG91c2VwbGFudHxlbnwwfDJ8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
@@ -65,35 +69,37 @@ const plantImg = () => {
   return plantUrl[randomNum];
 }
 
-
 const createPost = () => {
-  const getRandomNumber = Math.floor(Math.random() * Math.floor(10) + 1);
+  if (userPlants === 0) {
+    const getRandomNumber = Math.floor(Math.random() * Math.floor(10) + 1);
+    userPlants = getRandomNumber;
+    lines++;
+  }
 
-  const id = lines; 
-  const userRef = ;
-  const plant_name = plantName();
-  const plantImg = 
-  const chosen_name = faker.name.firstName();
+  const id = num;
+  const userRef = lines;
+  const plant = plantName();
+  const plantImg = plantImage();
+  const chosenName = faker.name.firstName();
   const lastWatered = randomDate();
   const status = generateRandomBoolean();
   const location = generateRandomPlace();
 
-  return `"${id}","${userRef}","${plant_name}",${plantImg},${chosen_name},${lastWatered},${status},${location}\n`;
+  num++;
+  userPlants--;
+
+  return `"${id}","${userRef}","${plant}",${plantImg},${chosenName},${lastWatered},${status},${location}\n`;
 };
 
 const startWriting = (writeStream, encoding, done) => {
-  let i = lines;
+  // let lines = num;
 
   function writing() {
     let canWrite = true;
     do {
-      if (i % (Math.floor(lines / 10)) === 10) {
-        console.log(`${i} lines left`);
-      }
-      i--;
       const post = createPost();
       // check if i === 0 so we would write and call `done`
-      if (i === 0) {
+      if (lines === 10) {
         // we are done so fire callback
         writeStream.write(post, encoding, done);
       } else {
@@ -102,9 +108,9 @@ const startWriting = (writeStream, encoding, done) => {
         // monitor data accumulation
       }
       // else call write and continue looping
-    } while (i > 0 && canWrite);
+    } while (lines < 11 && canWrite);
 
-    if (i > 0 && !canWrite) {
+    if (lines < 11 && !canWrite) {
       // our buffer for stream filled and need to wait for drain
       // Write some more once it drains.
       writeStream.once('drain', writing);

@@ -1,4 +1,4 @@
--- DROP DATABASE IF EXISTS rooting4u;
+DROP DATABASE IF EXISTS rooting4u;
 
 CREATE DATABASE rooting4u;
 
@@ -32,5 +32,18 @@ CREATE TABLE plant_diary (
   FOREIGN KEY (plantRef) REFERENCES plant_info(id)
 );
 
+LOAD DATA LOCAL INFILE '/Users/annie/Desktop/hackreactor/rooting-for-you/database/userInfo.csv' INTO TABLE users
+  FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  IGNORE 1 LINES;
 
--- log into mysql and source <path of this schema> to create
+LOAD DATA LOCAL INFILE '/Users/annie/Desktop/hackreactor/rooting-for-you/database/plantInfo.csv' INTO TABLE plant_info
+  FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  IGNORE 1 LINES;
+
+--modify path above according to where it is in your file
+  -- log into mysql type in this -> source <path of this schema>
+  --if data doesn't save because of loading local data is distabled do the below steps:
+  --in mysql type this: SET GLOBAL local_infile=1;
+  --quit and restart and try downloading schema again
