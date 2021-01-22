@@ -52,7 +52,7 @@ app.get('/plants/:family', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-  res.status(200).send(true);
+  res.status(200).send(2);
 });
 
 app.listen(port, () => {

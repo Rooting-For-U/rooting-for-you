@@ -7,14 +7,14 @@ import Homepage from './components/Homepage.jsx';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 
-
 ReactDOM.render(
   <Router>
-     <Switch>
-        <Route exact path="/" component={App}/>
-        <Route exact path="/login" component={Login}/>
-        <Route exact path="/homepage" component={Homepage}/>
+    <Switch>
+      <Route exact path="/" component={Login} />
+      {/* <Route exact path="/" component={App} /> */}
+      {/* <Route exact path="/login" component={Login} /> */}
+      <Route exact path="/homepage" component={Homepage} />
     </Switch>
   </Router>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
