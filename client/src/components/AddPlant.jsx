@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddPlant = (userRef) => {
+const AddPlant = (props) => {
   const [plantName, setPlantName] = useState('');
   const plantImg = 'https://cdn.shopify.com/s/files/1/0252/3928/9903/products/zz-plant-547577_540x.jpg?v=1606033857';
   const [chosenName, setChosenName] = useState('');
@@ -11,9 +11,24 @@ const AddPlant = (userRef) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('submit is called');
+    console.log('props: ', props);
+    props.close(false);
+    props.setPlants([{
+      id: props.userRef,
+      userRef: props.userRef,
+      plant_name: plantName,
+      plantImg,
+      chosen_name: chosenName,
+      lastWatered,
+      status,
+      location,
+    },
+    ...props.plants]);
+    console.log('after props.setPlants, plants: ', props.plants);
     axios.post('/u/new', {
       params: {
-        userRef,
+        userRef: props.userRef,
         plant_name: plantName,
         plantImg,
         chosen_name: chosenName,
@@ -24,6 +39,9 @@ const AddPlant = (userRef) => {
     })
       .then((res) => {
         console.log(res);
+      })
+      .then(() => {
+        props.close(false);
       })
       .catch((err) => {
         console.log(err);
@@ -54,13 +72,14 @@ const AddPlant = (userRef) => {
           e.preventDefault();
           seLocation(e.target.value);
         }}
-        placeholder="Give your plant a name"
+        placeholder="Where it grows?"
       />
+      <input type="submit" value="Submit" />
     </form>
   );
 };
 
-module.exports.AddPlant = AddPlant;
+export default AddPlant;
 
 // reference
 // id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
