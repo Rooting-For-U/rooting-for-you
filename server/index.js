@@ -18,9 +18,10 @@ app.use('/', express.static(path.resolve(__dirname, '../client/dist')));
 
 //get plants for specific user
 app.get('/u/plants', (req, res) => {
-  const { id } = req.params;
-  const query = 'SELECT * FROM plant_info INNER Join users ON users.id = plant_info.userRef and users.userId = ?';
-  db.connection.query(query, id, (err, result) => {
+  const { id } = req.query;
+  console.log('req', id);
+  const query = 'SELECT * FROM plant_info INNER Join users ON users.id = plant_info.userRef and users.id = ?';
+  db.connection.query(query, Number(id), (err, result) => {
     if (err) {
       res.sendStatus(404);
     }
