@@ -42,13 +42,18 @@ app.get('/plants/:family', (req, res) => {
       console.log('error', err);
       res.status(404);
     });
-  // can't read function for separation of concern
-  // axios.get(controller.plants.getPlantByType(family))
-  //   .then(data => {
-  //     console.log(data);
-  //     res.send(data);
-  //   });
-  // res.send('Rooting for you!');
+});
+
+//update water
+app.get('u/plants/water', (req, res) => {
+  const { updateWater, userId, chosenName } = req.params;
+  const query = 'UPDATE plant_info, users SET plant_info.lastWatered = ? WHERE plant_info.chosen_name = ? AND users.userid = ? AND plant_info.userRef=users.id;';
+  db.connection.query(query, [updateWater, chosenName, userId], (err, res) => {
+    if (err) {
+      res.sendStatus(404);
+    }
+    res.sendStatus(200);
+  });
 });
 
 app.post('/login', (req, res) => {
