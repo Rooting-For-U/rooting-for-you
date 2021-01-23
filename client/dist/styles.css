@@ -256,23 +256,38 @@ html {
 .plantName {
   position: relative;
   top: -10px;
-  left: -32px;
+  left: -40px;
   font-family: Nunito;
   font-style: normal;
-  font-weight: normal;
-  font-size: 22px;
-  line-height: 30px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
+.plantFamily {
+  position: relative;
+  top: -15px;
+  left: 0px;
+  font-family: Nunito;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 14px;
+}
 .waterDrop {
   position: relative;
-  top: -37px;
-  right: -190px;
+  top: -42px;
+  right: -180px;
+  padding: 2px;
+  margin: 2px;
+  background-color:  rgba(255, 255, 255, 0.32);
+  border-radius: 30px;
+  border-color: black;
+  border-width: medium;
+
 }
 
 .plantTxt {
   position: relative;
-  top: -10px;
+  top: -15px;
   font-family: Nunito;
   font-style: normal;
   font-weight: normal;
@@ -284,4 +299,110 @@ html {
 .content {
   display: flex;
 	height: 100%;
+}
+
+
+/* Add Plant */
+
+.addPlantMain {
+  position: absolute;
+  width: 444px;
+  height: 500px;
+  left: 35%;
+  top: 15%;
+}
+
+.addPlantMsg {
+  position: relative;
+  top: 0%;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 33px;
+  text-align: center;
+}
+
+.addPlantForm {
+  position: relative;
+  height: 430px;
+  width: 444px;
+  bottom: 0%;
+  background: #FDFDFD;
+  border-radius: 30px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 30px;
+  color: rgba(0, 0, 0, 0.5);
+
+}
+
+.addPlantImg {
+  position: relative;
+  top: 9%;
+  left: 36%;
+}
+
+.addName {
+  position: relative;
+  width: 364px;
+  height: 30px;
+  left: 40px;
+  top: 50px;
+  background: rgba(26, 54, 91, 0.32);
+  border-radius: 30px;
+}
+
+.addFamily {
+  position: relative;
+  width: 364px;
+  height: 30px;
+  left: 40px;
+  top: 65px;
+  background: rgba(26, 54, 91, 0.32);
+  border-radius: 30px;
+}
+
+.addLocation {
+  position: relative;
+  width: 364px;
+  height: 30px;
+  left: 40px;
+  top: 80px;
+  background: rgba(26, 54, 91, 0.32);
+  border-radius: 30px;
+}
+
+.addFrequency {
+  position: relative;
+  width: 364px;
+  height: 30px;
+  left: 40px;
+  top: 95px;
+  background: rgba(26, 54, 91, 0.32);
+  border-radius: 30px;
+}
+
+.addPlantBtn {
+  position: relative;
+  width: 364px;
+  height: 30px;
+  top: 110px;
+  left: 40px;
+  background: #1A365B;
+  border-radius: 30px;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 30px;
+  text-align: center;
+
+  color: #FFFFFF;
+  text-decoration: none;
+  outline: none;
+  border-color: transparent;
 }

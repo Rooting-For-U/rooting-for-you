@@ -10,7 +10,7 @@ const Plant = (plant) => {
   const initialDaysNoWater = today - lastWaterDate;
   const [daysNoWater, setDaysNoWater] = useState(initialDaysNoWater);
   const [fullWaterDrop, setFullWaterDrop] = useState(false);
-
+console.log(plant.plant)
 
 
   useEffect(() => {
@@ -33,6 +33,7 @@ const Plant = (plant) => {
     <div className="plant" key={plant.plant.chosen_name}>
 
       <img className="plantImg" src={plant.plant.plantImg} alt="plant" />
+
       {
         fullWaterDrop &&
         <img className="waterDrop" src='./fullDrop.svg' value={plant.plant.id} onClick={handleClick} alt="rain-drop" />
@@ -42,11 +43,12 @@ const Plant = (plant) => {
         <img className="waterDrop" src='./drop.svg' value={plant.plant.id} onClick={handleClick} alt="rain-drop" />
       }
 
-      <span className="plantName">{plant.plant.plant_name}</span>
+      <span className="plantName">{plant.plant.chosen_name}</span><br/>
+      <span className="plantFamily">{plant.plant.plant_name}</span>
       <div className="plantTxt">
-        <span> last watered: {daysNoWater} day(s) ago</span>
+        <span> last watered: <b>{daysNoWater}</b> day(s) ago</span>
         <br />
-        <span>{plant.plant.location}</span>
+        <span>located in the <b>{plant.plant.location}</b></span>
       </div>
       <br />
     </div>
