@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Plant from './Plant.jsx';
 import AddPlant from './AddPlant.jsx';
+import { Link } from 'react-router-dom';
 
 const Homepage = (userId) => {
   const [plants, setPlants] = useState([]);
@@ -29,22 +30,29 @@ const Homepage = (userId) => {
         <span className="navLogo">Rooting For You</span>
         <button className="addPlant" type="button" onClick={() => { showAddPlant(true); }}>add plant</button>
         <button className="findPlant " type="button">find plant</button>
-        <button className="logout" type="button">log out</button>
+        <Link to='/'><button className="logout" type="button">log out</button></Link>
       </div>
-      <div className="this-is-a-modal">
-        {addPlant && (<AddPlant userRef={sampleId} close={showAddPlant} setPlants={setPlants} plants={plants} />)}
-      </div>
-      <span className="welcomeMsg">
+      {addPlant && (<AddPlant userRef={sampleId} close={showAddPlant} setPlants={setPlants} plants={plants} />)}
+      {
+        !addPlant && (
+        <span className="welcomeMsg">
         Welcome back
         {}
         , here's your plant status...
-      </span>
+        </span>
+        )
+      }
+
       <div className ="content">
+        {
+        !addPlant &&
         <div className="plantContainer">
-          {plants.map(((plant) => (
-            <Plant plant={plant} userId={sampleId} />
-          )))}
+        {plants.map(((plant) => (
+          <Plant plant={plant} userId={sampleId} />
+        )))}
         </div>
+        }
+
       </div>
     </div>
   );

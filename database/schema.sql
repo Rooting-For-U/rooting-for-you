@@ -18,9 +18,9 @@ CREATE TABLE plant_info (
   plant_name VARCHAR(255) NOT NULL,
   plantImg VARCHAR(255) NOT NULL,
   chosen_name VARCHAR(255),
-  lastWatered DATE, 
+  lastWatered DATE,
   status BOOLEAN NOT NULL,
-  location VARCHAR(255), 
+  location VARCHAR(255),
   FOREIGN KEY (userRef) REFERENCES users(id)
 );
 
@@ -28,16 +28,16 @@ CREATE TABLE plant_diary (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   plantRef int NOT NULL,
   date TIMESTAMP NOT NULL,
-  log VARCHAR(255), 
+  log VARCHAR(255),
   FOREIGN KEY (plantRef) REFERENCES plant_info(id)
 );
 
-LOAD DATA LOCAL INFILE '/Users/annie/Desktop/hackreactor/rooting-for-you/database/userInfo.csv' INTO TABLE users
+LOAD DATA LOCAL INFILE '/Users/marissa/Desktop/rooting/rooting-for-you/database/userInfo.csv' INTO TABLE users
   FIELDS TERMINATED BY ',' ENCLOSED BY '"'
   LINES TERMINATED BY '\n'
   IGNORE 1 LINES;
 
-LOAD DATA LOCAL INFILE '/Users/annie/Desktop/hackreactor/rooting-for-you/database/plantInfo.csv' INTO TABLE plant_info
+LOAD DATA LOCAL INFILE '/Users/marissa/Desktop/rooting/rooting-for-you/database/plantInfo.csv' INTO TABLE plant_info
   FIELDS TERMINATED BY ',' ENCLOSED BY '"'
   LINES TERMINATED BY '\n'
   IGNORE 1 LINES;
