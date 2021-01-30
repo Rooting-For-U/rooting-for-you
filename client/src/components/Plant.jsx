@@ -10,7 +10,7 @@ const Plant = (plant) => {
   const initialDaysNoWater = today - lastWaterDate;
   const [daysNoWater, setDaysNoWater] = useState(initialDaysNoWater);
   const [fullWaterDrop, setFullWaterDrop] = useState(false);
-console.log(plant.plant)
+// console.log(plant.plant)
 
 
   useEffect(() => {

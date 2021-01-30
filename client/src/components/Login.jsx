@@ -11,7 +11,6 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('click worked', username, password);
     alert(`Submitting ${username} ${password}`);
     axios.post('/login', {
       params: {
@@ -20,7 +19,6 @@ const Login = () => {
       },
     })
       .then((res) => {
-        console.log(res, 'from signin');
         setUserId(res.data[0].id);
         setFullname(res.data[0].fullname);
         changeLog(true);
