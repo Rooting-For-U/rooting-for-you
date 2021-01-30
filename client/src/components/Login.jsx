@@ -6,20 +6,28 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [userId, setUserId] = useState(0);
+  const [fullname, setFullname] = useState('');
+  const [login, setLogin] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('click worked', username, password);
     alert(`Submitting ${username} ${password}`);
-    axios.post('./login', {
+    axios.post('/login', {
       params: {
         password,
         username,
       },
     })
       .then((res) => {
-        console.log(res);
-        setUserId(res);
-      });
+        console.log(res, 'from signin');
+        setUserId(res.data[0].id);
+        setFullname(res.data[0].fullname);
+        setLogin(true);
+      })
+      .catch(err => {
+        console.log(err, 'error');
+      })
   };
 
   return (
@@ -55,12 +63,11 @@ const Login = () => {
               placeholder="password"
             />
           </div>
-          <Link to={{ pathname: '/homepage', query: userId }}>
+          {/* <Link to={{ pathname: '/homepage', query: userId }}> */}
             <input className="submitBtn" type="submit" value="submit" />
-          </Link>
+          {/* </Link> */}
         </form>
       </div>
-      
     </div>
   );
 };
