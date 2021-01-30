@@ -9,6 +9,7 @@ const Homepage = (data) => {
   const [addPlant, showAddPlant] = useState(false);
   const [userId, setUserId] = useState(null); // this go to App
 
+  console.log('updated homepage component');
   useEffect(() => {
     setUserId(data.location.query);
     axios.get('/u/plants', {

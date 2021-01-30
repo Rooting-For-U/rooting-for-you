@@ -11,32 +11,39 @@ const Plant = ({ plant, userId }) => {
   const initialDaysNoWater = today - lastWaterDate;
   const [daysNoWater, setDaysNoWater] = useState(initialDaysNoWater);
   const [fullWaterDrop, setFullWaterDrop] = useState(false);
-console.log(plant, 'inside plant');
 
-console.log(plant, 'inside plant component');
+  console.log('updated plant component');
+
   useEffect(() => {
     if (daysNoWater === 0) {
       setFullWaterDrop(true);
     }
   }, []);
 
-  // const saveWaterDate = () => {
-  //   axios.patch('api', {
-  //     params: {
-  //       id: userId,
-  //       lastWatered: now
-  //     },
-  //   })
-  //   .then({ data });
-  // }
+  const saveWaterDate = () => {
+    axios.patch('/u/plants/water', {
+      params: {
+        userId,
+        chosenName: plant.chosen_name,
+        updateWater: JSON.stringify(now).slice(1, 11),
+      },
+    })
+      .then(() => {
+        console.log('success in saving water info');
+      })
+      .catch((err) => {
+        console.log(err, 'err in saving waterdate');
+      });
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
     setWaterDate(now);
     setDaysNoWater(0);
     setFullWaterDrop(true);
-    console.log(now, today, 'dates');
-    //update database with timestamp
+    // console.log(now, today, 'dates');
+    // update database with timestamp
+    saveWaterDate();
   };
 
   return (
@@ -45,20 +52,30 @@ console.log(plant, 'inside plant component');
       <img className="plantImg" src={plant.plantImg} alt="plant" />
 
       {
-        fullWaterDrop &&
-        <img className="waterDrop" src='./fullDrop.svg' value={plant.id} onClick={handleClick} alt="rain-drop" />
+        fullWaterDrop
+        && <img className="waterDrop" src="./fullDrop.svg" value={plant.id} onClick={handleClick} alt="rain-drop" />
       }
       {
-        !fullWaterDrop &&
-        <img className="waterDrop" src='./drop.svg' value={plant.id} onClick={handleClick} alt="rain-drop" />
+        !fullWaterDrop
+        && <img className="waterDrop" src="./drop.svg" value={plant.id} onClick={handleClick} alt="rain-drop" />
       }
 
-      <span className="plantName">{plant.chosen_name}</span><br/>
+      <span className="plantName">{plant.chosen_name}</span>
+      <br />
       <span className="plantFamily">{plant.plant_name}</span>
       <div className="plantTxt">
-        <span> last watered: <b>{daysNoWater}</b> day(s) ago</span>
+        <span>
+          {' '}
+          last watered:
+          <b>{daysNoWater}</b>
+          {' '}
+          day(s) ago
+        </span>
         <br />
-        <span>located in the <b>{plant.location}</b></span>
+        <span>
+          {plant.location === 'outside' ? 'located' : 'located in the'}
+          <b>{` ${plant.location}`}</b>
+        </span>
       </div>
       <br />
     </div>
