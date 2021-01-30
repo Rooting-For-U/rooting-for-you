@@ -2,18 +2,21 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Plant from './Plant.jsx';
 import AddPlant from './AddPlant.jsx';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 
-const Homepage = (userId) => {
+const Homepage = (id) => {
   const [plants, setPlants] = useState([]);
   const [addPlant, showAddPlant] = useState(false);
-  // const[userId, setUserId] = useState(null); // this go to App
-  const sampleId = 2;
+  const[userId, setUserId] = useState(null); // this go to App
+
+  console.log(id);
 
   useEffect(() => {
+    console.log(id.location.query);
+    setUserId(id);
     axios.get('/u/plants', {
       params: {
-        id: sampleId,
+        id: id.location.query,
       },
     })
       .then(({ data }) => {
@@ -37,7 +40,7 @@ const Homepage = (userId) => {
         !addPlant && (
         <span className="welcomeMsg">
         Welcome back
-        {}
+        {` ${id.location.fullname}`}
         , here's your plant status...
         </span>
         )
@@ -48,7 +51,7 @@ const Homepage = (userId) => {
         !addPlant &&
         <div className="plantContainer">
         {plants.map(((plant) => (
-          <Plant plant={plant} userId={sampleId} />
+          <Plant plant={plant} userId={userId} />
         )))}
         </div>
         }
