@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 const Login = () => {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [userId, setUserId] = useState(0);
   const [fullname, setFullname] = useState('');
-  const [login, setLogin] = useState(false);
+  const [loggedIn, changeLog] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const Login = () => {
         console.log(res, 'from signin');
         setUserId(res.data[0].id);
         setFullname(res.data[0].fullname);
-        setLogin(true);
+        changeLog(true);
       })
       .catch(err => {
         console.log(err, 'error');
@@ -63,6 +63,7 @@ const Login = () => {
               placeholder="password"
             />
           </div>
+          {loggedIn ? <Redirect to={{ pathname: '/homepage', query: userId }}/> : null}
           {/* <Link to={{ pathname: '/homepage', query: userId }}> */}
             <input className="submitBtn" type="submit" value="submit" />
           {/* </Link> */}
