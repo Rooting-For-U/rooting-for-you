@@ -26,7 +26,7 @@ app.get('/u/plants', (req, res) => {
     if (err) {
       res.sendStatus(404);
     }
-    console.log(result, 'result');
+    // console.log(result, 'result');
     res.send(result);
   });
 });
@@ -47,14 +47,16 @@ app.get('/plants/:family', (req, res) => {
 });
 
 // update water
-app.get('u/plants/water', (req, res) => {
-  const { updateWater, userId, chosenName } = req.params;
-  const query = 'UPDATE plant_info, users SET plant_info.lastWatered = ? WHERE plant_info.chosen_name = ? AND users.userid = ? AND plant_info.userRef=users.id;';
-  db.connection.query(query, [updateWater, chosenName, userId], (err, res) => {
+app.patch('/u/plants/water', (req, res) => {
+  console.log(req.body.params, 'patch');
+  const { updateWater, userId, chosenName } = req.body.params;
+  const query = 'UPDATE plant_info, users SET plant_info.lastWatered = ? WHERE plant_info.chosen_name = ? AND users.id = ? AND plant_info.userRef=users.id;';
+  db.connection.query(query, [updateWater, chosenName, userId], (err, result) => {
     if (err) {
-      res.sendStatus(404);
+      console.log(err, 'error in updating');
+      res.status(404);
     }
-    res.sendStatus(200);
+    res.status(200).send(result);
   });
 });
 

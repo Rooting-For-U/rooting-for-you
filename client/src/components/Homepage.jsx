@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import Plant from './Plant.jsx';
 import AddPlant from './AddPlant.jsx';
-import { Link, useParams, useLocation } from 'react-router-dom';
 
 const Homepage = (data) => {
   const [plants, setPlants] = useState([]);
   const [addPlant, showAddPlant] = useState(false);
   const [userId, setUserId] = useState(null); // this go to App
 
+  console.log('updated homepage component');
   useEffect(() => {
     setUserId(data.location.query);
     axios.get('/u/plants', {
@@ -25,32 +26,41 @@ const Homepage = (data) => {
   // console.log('plants at homepage: ', plants);
   return (
     <div className="homepage">
-      <img className="homepageImg" src='/homeBkgd.svg'></img>
+      <img className="homepageImg" src="/homeBkgd.svg" />
       <div className="navigation">
         <span className="navLogo">Rooting For You</span>
         <button className="addPlant" type="button" onClick={() => { showAddPlant(true); }}>add plant</button>
         <button className="findPlant " type="button">find plant</button>
-        <Link to='/'><button className="logout" type="button">log out</button></Link>
+        <Link to="/"><button className="logout" type="button">log out</button></Link>
       </div>
-      {addPlant && (<AddPlant userRef={userId} close={showAddPlant} setPlants={setPlants} plants={plants} />)}
+      {addPlant && (
+      <AddPlant
+        userRef={userId}
+        close={showAddPlant}
+        setPlants={setPlants}
+        plants={plants}
+      />
+      )}
       {
         !addPlant && (
         <span className="welcomeMsg">
-        Welcome back
-        {` ${data.location.fullname}`}
-        , here's your plant status...
+          Welcome back
+          {` ${data.location.fullname}`}
+          , here's your plant status...
         </span>
         )
       }
 
-      <div className ="content">
+      <div className="content">
         {
-        !addPlant &&
+        !addPlant
+        && (
         <div className="plantContainer">
-        {plants.map(((plant, index) => (
-          <Plant key={plant + index} plant={plant} userId={userId} />
-        )))}
+          {plants.map(((plant, index) => (
+            <Plant key={plant + index} plant={plant} userId={userId} />
+          )))}
         </div>
+        )
         }
 
       </div>
@@ -59,7 +69,6 @@ const Homepage = (data) => {
 };
 
 export default Homepage;
-
 
 // const waterDate = Date();
 // const sampleData = [
@@ -112,4 +121,3 @@ export default Homepage;
 //     imgURL: 'sampleWhiteFlower.jpg',
 //   },
 // ];
-
