@@ -60,6 +60,7 @@ app.patch('/u/plants/water', (req, res) => {
   });
 });
 
+//login user
 app.post('/login', (req, res) => {
   console.log(req.body.params, 'req');
   const { username, password } = req.body.params;
@@ -76,6 +77,21 @@ app.post('/login', (req, res) => {
     // res.redirect('/homepage');
   });
   // res.status(200).send(2);
+});
+
+//make new user
+app.post('/signup', (req, res) => {
+  const { username, password, fullname, email } = req.body.params;
+  const query = 'INSERT INTO users (userId, password, fullname, email) VALUES (?, ?, ?, ?)';
+  const values = [ username, password, fullname, email ];
+  db.connection.query(query, values, (err, result) => {
+    if (!result) {
+      console.log('signup fail', err);
+      res.send('Username exists');
+    }
+    console.log(result);
+    res.send(result);
+  })
 });
 
 app.listen(port, () => {

@@ -20,6 +20,7 @@ const Plant = ({ plant, userId }) => {
     }
   }, []);
 
+  //update water for specific plant 
   const saveWaterDate = () => {
     axios.patch('/u/plants/water', {
       params: {
@@ -41,7 +42,6 @@ const Plant = ({ plant, userId }) => {
     setWaterDate(now);
     setDaysNoWater(0);
     setFullWaterDrop(true);
-    // console.log(now, today, 'dates');
     // update database with timestamp
     saveWaterDate();
   };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const Login = () => {
   const [password, setPassword] = useState('');
@@ -8,6 +8,8 @@ const Login = () => {
   const [id, setUserId] = useState(0);
   const [fullname, setFullname] = useState('');
   const [loggedIn, changeLog] = useState(false);
+
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,9 +25,9 @@ const Login = () => {
         setFullname(res.data[0].fullname);
         changeLog(true);
       })
-      .catch(err => {
+      .catch((err => {
         console.log(err, 'error');
-      })
+      }));
   };
 
   return (
@@ -62,9 +64,9 @@ const Login = () => {
             />
           </div>
           {loggedIn ? <Redirect to={{ pathname: '/homepage', query: id, fullname }} /> : null}
-          {/* <Link to={{ pathname: '/homepage', query: userId }}> */}
             <input className="submitBtn" type="submit" value="submit" />
-          {/* </Link> */}
+            <p />
+            <button className="submitBtn" type="button" value="back" onClick={() => {history.push('/')}}>back</button>
         </form>
       </div>
     </div>
