@@ -7,6 +7,7 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [firstname, setFirstname] = useState('');
+  const [fullname, setFullname] = useState('');
   const [lastname, setLastname] = useState('');
   const [id, setUserId] = useState(0);
   const [loggedIn, changeLog] = useState(false);
@@ -25,7 +26,7 @@ const Signup = () => {
       },
     })
       .then((result) => {
-        console.log(result.data.insertId);
+        // console.log(result.data.insertId);
         setUserId(result.data.insertId);
         setFullname(`${firstname} ${lastname}`);
         changeLog(true);
