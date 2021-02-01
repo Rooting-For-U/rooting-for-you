@@ -74,9 +74,7 @@ app.post('/login', (req, res) => {
     }
     console.log('succeeded login');
     res.send(result);
-    // res.redirect('/homepage');
   });
-  // res.status(200).send(2);
 });
 
 //make new user

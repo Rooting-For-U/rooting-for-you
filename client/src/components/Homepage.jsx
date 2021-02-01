@@ -3,10 +3,12 @@ import axios from 'axios';
 import { Link, useParams, useLocation } from 'react-router-dom';
 import Plant from './Plant.jsx';
 import AddPlant from './AddPlant.jsx';
+import FindPlant from './FindPlant.jsx';
 
 const Homepage = (data) => {
   const [plants, setPlants] = useState([]);
   const [addPlant, showAddPlant] = useState(false);
+  const [findPlant, showFindPlant] = useState(false);
   const [userId, setUserId] = useState(null); // this go to App
 
   console.log('updated homepage component');
@@ -28,9 +30,9 @@ const Homepage = (data) => {
     <div className="homepage">
       <img className="homepageImg" src="/homeBkgd.svg" />
       <div className="navigation">
-        <span className="navLogo">Rooting For You</span>
-        <button className="addPlant" type="button" onClick={() => { showAddPlant(true); }}>add plant</button>
-        <button className="findPlant " type="button">find plant</button>
+        <div className="navLogo" onClick={() => { showAddPlant(false); showFindPlant(false)}}>Rooting For You</div>
+        <button className="addPlant" type="button" onClick={() => { showFindPlant(false); showAddPlant(true); }}>add plant</button>
+        <button className="findPlant " type="button" onClick={() => { showAddPlant(false); showFindPlant(true);}}>find plant</button>
         <Link to="/"><button className="logout" type="button">log out</button></Link>
       </div>
       {addPlant && (
@@ -41,8 +43,11 @@ const Homepage = (data) => {
         plants={plants}
       />
       )}
+      {findPlant && (
+        <FindPlant />
+      )}
       {
-        !addPlant && (
+        !addPlant && !findPlant && (
         <span className="welcomeMsg">
           Welcome back
           {` ${data.location.fullname}`}
@@ -53,7 +58,7 @@ const Homepage = (data) => {
 
       <div className="content">
         {
-        !addPlant
+        !addPlant && !findPlant
         && (
         <div className="plantContainer">
           {plants.map(((plant, index) => (
