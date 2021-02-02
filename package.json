@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server",
     "build": "webpack --config webpack.config.js --watch",
-    "seed": "node database/seed.js"
+    "seed": "node database/seed.js",
+    "cache": "redis-server"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
+    "redis": "^3.0.2",
     "sequelize": "^6.4.0",
     "yargs": "^16.2.0"
   },

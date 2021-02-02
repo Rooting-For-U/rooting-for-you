@@ -1,7 +1,10 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
+const redis = require("redis");
+const redisPort = 6379;
 
+const client = redis.createClient(redisPort);
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -9,6 +12,7 @@ const bodyParser = require('body-parser');
 // const controller = require('./controller/index.js');
 const db = require('../database/index.js');
 const API_KEY = require('./config/token.js');
+const { cli } = require('webpack');
 
 const port = 3000;
 
@@ -34,16 +38,30 @@ app.get('/u/plants', (req, res) => {
 // //get plant list by family
 app.get('/plants/:family', (req, res) => {
   const { family } = req.params;
-  const typeUrl = `https://trefle.io/api/v1/plants/search?token=${API_KEY}&q=${family}`;
 
-  axios.get(typeUrl)
-    .then((response) => {
-      res.send(response.data);
-    })
-    .catch((err) => {
-      console.log('error', err);
-      res.status(404);
+  try {
+    client.get(family, async (err, plants) => {
+      if (err) throw err;
+      if (plants) {
+        console.log('cache is used');
+        res.status(200).send(JSON.parse(plants));
+      } else {
+        console.log('cache is not used');
+        const typeUrl = `https://trefle.io/api/v1/plants/search?token=${API_KEY}&q=${family}`;
+        axios.get(typeUrl)
+          .then((response) => {
+            client.setex(family, 6000, JSON.stringify(response.data));
+            res.send(response.data);
+          })
+          .catch((err) => {
+            console.log('error', err);
+            res.status(404);
+          });
+      }
     });
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 // update water
