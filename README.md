@@ -11,4 +11,12 @@ contains recommended watering frequencies based on user data. We found through o
 we could not find in any publicly available API. 
 
 # Demo
-<img src='https://i.imgur.com/MCBlhDm.mp4'>
+Login
+<img src='https://i.imgur.com/3jmJoxs.jpg'>
+
+Dashboard
+<img src='https://i.imgur.com/saU2HSw.jpg'>
+
+Add a Plant
+<img src='https://i.imgur.com/609agcH.jpg'>
+<img src='https://i.imgur.com/l1qpNyD.jpg'>
