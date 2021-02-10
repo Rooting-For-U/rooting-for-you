@@ -11,4 +11,4 @@ contains recommended watering frequencies based on user data. We found through o
 we could not find in any publicly available API. 
 
 # Demo
-![Demo of rooting for you app](https://imgur.com/MCBlhDm)
+<img src='https://i.imgur.com/MCBlhDm.mp4'>
