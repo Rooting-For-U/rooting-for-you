@@ -7,7 +7,7 @@ const App = () => {
 
   return (
     <div>
-      <img className="loginBkgd" src="./loginBkgd.svg" />
+      <img className="loginBkgd" src="./loginBkgd.svg" alt="login background" />
       <div className="center">
         <div className="title">
           <div className="logo">Rooting For You</div>
